@@ -11,12 +11,18 @@ function permutationSort(a) {
         return permNum;
     }
     //Check if array is sorted, if so return
-    else if(checkSort(a)) {
+    if(checkSort(a)) {
         //console.log("already sorted");
         permNum++;
         return permNum;
     }
-
+    if(a.length == 2) {
+        if(!checkSort(a)) {
+            permuNum++;
+            [a[0], a[1]] = [a[1], a[0]];
+        }
+        return permNum;
+    }
     listOfPerms = permutations(a);
     //console.log("Permutations: ", listOfPerms);
     
@@ -97,3 +103,4 @@ function duplicateTest(previousArray, newArray) {
 
 console.log(permutationSort([0, 1, 0]));
 console.log(permutationSort([0, 1]));
+console.log(permutationSort([1, 0]));
