@@ -6,9 +6,14 @@ function permutationSort(a) {
     //let numToMove = 0;
 
     //If length is 0, list is sorted
-    if(a.length == 0) { 
+    //If length is 0 or 1, list is sorted
+    if(a.length == 0 || a.length == 1) { 
         permNum++;
         return permNum;
+    }
+    else if(a.length == 2) {
+        permNum++;
+        [a[0], a[1]] = [a[1], a[0]];
     }
     //Check if array is sorted, if so return
     else if(checkSort(a)) {
