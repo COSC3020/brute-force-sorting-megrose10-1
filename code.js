@@ -5,18 +5,14 @@ function permutationSort(a) {
     let listOfPerms = [];
     //let numToMove = 0;
 
-    //If length is 0, list is sorted
     //If length is 0 or 1, list is sorted
     if(a.length == 0 || a.length == 1) { 
         permNum++;
         return permNum;
     }
     else if(a.length == 2) {
-        if(!checkSort(a)) {
-            permNum++;
-            [a[0], a[1]] = [a[1], a[0]];
-        }
-        return permNum;
+        permNum++;
+        [a[0], a[1]] = [a[1], a[0]];
     }
     //Check if array is sorted, if so return
     else if(checkSort(a)) {
@@ -55,9 +51,25 @@ function permutations(a) {
         let reArrPerm = permutations(rePerm);
 
         // Put together the current element with the permutations we found
-        perms = perms.concat(reArrPerm.map(permArr => [perm, ...permArr]));
+        for(let permArr of reArrPerm) {
+            let permsTogether = [perm, ...permArr];
+            let duplicate = false;
+            //See if permutation has already been found
+            for(let existingPerm of perms) {
+                if(duplicateTest(existingPerm, permsTogether)) {
+                    duplicate = true;
+                    break;
+                }
+            }
+
+            if(!duplicate) {
+                perms.push(permsTogether);
+            }
+        }
+        //perms = perms.concat(reArrPerm.map(permArr => [perm, ...permArr]));
     }
     //console.log(perms);
+ 
     return perms;
     
 }
@@ -76,4 +88,15 @@ function checkSort(array) {
     return true;
 }
 
-//console.log(permutationSort([3, 2, 1]));
+//Function to test if there is a duplicate
+function duplicateTest(previousArray, newArray) {
+    for(let i = 0; i < previousArray.length; i++) {
+        if(previousArray[i] != newArray[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+//console.log(permutationSort([0, 1, 0]));
