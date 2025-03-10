@@ -12,8 +12,11 @@ function permutationSort(a) {
         return permNum;
     }
     else if(a.length == 2) {
-        permNum++;
-        [a[0], a[1]] = [a[1], a[0]];
+        if(!checkSort(a)) {
+            permNum++;
+            [a[0], a[1]] = [a[1], a[0]];
+        }
+        return permNum;
     }
     //Check if array is sorted, if so return
     else if(checkSort(a)) {
