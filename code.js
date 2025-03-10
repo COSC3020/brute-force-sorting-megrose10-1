@@ -18,7 +18,7 @@ function permutationSort(a) {
     }
     if(a.length == 2) {
         if(!checkSort(a)) {
-            permuNum++;
+            permNum++;
             [a[0], a[1]] = [a[1], a[0]];
         }
         return permNum;
