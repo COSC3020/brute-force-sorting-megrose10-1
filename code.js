@@ -1,36 +1,63 @@
 function permutationSort(a) {
-    let isSorted = false;
-    let permNum = 1;
+    //let isSorted = false;
+    //Amount of permutations
+    let permNum = 0;
+    let listOfPerms = [];
     //let numToMove = 0;
-    if(checkSort(a)) {
-        console.log("already sorted");
+
+    //If length is 0, list is sorted
+    if(a.length == 0) { 
+        permNum++;
         return permNum;
     }
-    while(!isSorted) {
-        let numToMove = 0;
-        //let num = 0;
-        for(let i = 1; i < a.length; i++) {
-            let tmp = a[numToMove];
-            a[numToMove] = a[i];
-            a[i] = tmp;
-            permNum++;
-            numToMove++;
-            if(checkSort(a) == true) {
-                isSorted = true;
-                break;
-                //i = array.length;
-            }
+    //Check if array is sorted, if so return
+    else if(checkSort(a)) {
+        //console.log("already sorted");
+        permNum++;
+        return permNum;
+    }
+
+    listOfPerms = permutations(a);
+    //console.log("Permutations: ", listOfPerms);
+    
+    //Looking at the list of permutations, count perms until you find the sorted permutation
+    for(let perm of listOfPerms) {
+        permNum++;
+        if(checkSort(perm)) {
+            return permNum;
         }
     }
     //console.log("Number of permutations: " + permNum);
     //console.log("Sorted: " + a);
-    return permNum;
+    //return permNum;
+}
+
+function permutations(a) {
+    let perms = [];
+
+    //If array is empty or one element, return
+    if(a.length <= 0) {
+        return [a];
+    }
+    //For each element in the array, generate its permutatiosn
+    for(let i = 0; i < a.length; i++) {
+        let perm = a[i]; //Element we are keeping the same
+        let rePerm = a.slice(0, i).concat(a.slice(i + 1));
+        //Recursively call permutations to find permutatiosn of what is left in array
+        let reArrPerm = permutations(rePerm);
+
+        // Put together the current element with the permutations we found
+        perms = perms.concat(reArrPerm.map(permArr => [perm, ...permArr]));
+    }
+    //console.log(perms);
+    return perms;
+    
 }
 
 function checkSort(array) {
-
+    //Go through array to check if it is sorted
     for(let i = 0; i < array.length; i++) {
-        for(let j = i + 1; j < array.length - 1; j++){
+        for(let j = i + 1; j < array.length; j++){
             if(array[i] > array[j]) {
                 //console.log("this is false");
                 return false;
@@ -41,6 +68,4 @@ function checkSort(array) {
     return true;
 }
 
-let array = [2, 3, 4, 1, 5];
-let a = [1, 2, 3];
-console.log(permutationSort(a));
+//console.log(permutationSort([3, 2, 1]));
