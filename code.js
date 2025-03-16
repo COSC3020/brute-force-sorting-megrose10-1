@@ -7,30 +7,21 @@ function permutationSort(a) {
 
     //If length is 0 or 1, list is sorted
     if(a.length <= 1) { 
-        permNum++;
+        //permNum++;
         return permNum;
     }
     //Check if array is sorted, if so return
     if(checkSort(a)) {
         //console.log("already sorted");
-        permNum++;
+        //permNum++;
         return permNum;
     }
-    if(a.length == 2) {
-        if(!checkSort(a)) {
-            permNum++;
-            [a[0], a[1]] = [a[1], a[0]];
-        }
-        return permNum;
-    }
-    listOfPerms = permutations(a);
-    //console.log("Permutations: ", listOfPerms);
     
     //Looking at the list of permutations, count perms until you find the sorted permutation
     for(let perm of listOfPerms) {
         permNum++;
         if(checkSort(perm)) {
-            return permNum;
+            return (permNum - 1);
         }
     }
     //console.log("Number of permutations: " + permNum);
