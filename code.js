@@ -7,15 +7,25 @@ function permutationSort(a) {
 
     //If length is 0 or 1, list is sorted
     if(a.length <= 1) { 
-        //permNum++;
+        permNum++;
         return permNum;
     }
     //Check if array is sorted, if so return
     if(checkSort(a)) {
         //console.log("already sorted");
-        //permNum++;
+        permNum++;
         return permNum;
     }
+    if(a.length == 2) {
+        permNum++;
+        if(!checkSort(a)) {
+            permNum++;
+            [a[0], a[1]] = [a[1], a[0]];
+        }
+        return permNum;
+    }
+    listOfPerms = permutations(a);
+    //console.log("Permutations: ", listOfPerms);
     
     //Looking at the list of permutations, count perms until you find the sorted permutation
     for(let perm of listOfPerms) {
@@ -27,13 +37,15 @@ function permutationSort(a) {
     //console.log("Number of permutations: " + permNum);
     //console.log("Sorted: " + a);
     //return permNum;
+
+    return permNum;
 }
 
 function permutations(a) {
     let perms = [];
 
     //If array is empty or one element, return
-    if(a.length <= 0) {
+    if(a.length <= 1) {
         return [a];
     }
     //For each element in the array, generate its permutatiosn
@@ -83,6 +95,8 @@ function checkSort(array) {
 
 //Function to test if there is a duplicate
 function duplicateTest(previousArray, newArray) {
+    
+    
     for(let i = 0; i < previousArray.length; i++) {
         if(previousArray[i] != newArray[i]) {
             return false;
@@ -92,6 +106,5 @@ function duplicateTest(previousArray, newArray) {
     return true;
 }
 
-//console.log(permutationSort([0, 1, 0]));
-//console.log(permutationSort([0, 1]));
+//console.log(permutations([1, 0]))
 //console.log(permutationSort([1, 0]));
