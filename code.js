@@ -26,8 +26,9 @@ function permutationSort(a) {
     
     //Looking at the list of permutations, count perms until you find the sorted permutation
     for(let perm of listOfPerms) {
+        permNum++;
         if(checkSort(perm)) {
-            return permNum;
+            return (permNum - 1);
         }
     }
     //console.log("Number of permutations: " + permNum);
