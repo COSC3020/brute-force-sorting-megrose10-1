@@ -15,7 +15,6 @@ function permutationSort(a) {
         return permNum;
     }
     if(a.length == 2) {
-        permNum++;
         if(!checkSort(a)) {
             permNum++;
             [a[0], a[1]] = [a[1], a[0]];
@@ -27,9 +26,8 @@ function permutationSort(a) {
     
     //Looking at the list of permutations, count perms until you find the sorted permutation
     for(let perm of listOfPerms) {
-        permNum++;
         if(checkSort(perm)) {
-            return (permNum - 1);
+            return permNum;
         }
     }
     //console.log("Number of permutations: " + permNum);
