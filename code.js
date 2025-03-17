@@ -7,13 +7,11 @@ function permutationSort(a) {
 
     //If length is 0 or 1, list is sorted
     if(a.length <= 1) { 
-        permNum++;
         return permNum;
     }
     //Check if array is sorted, if so return
     if(checkSort(a)) {
         //console.log("already sorted");
-        permNum++;
         return permNum;
     }
     if(a.length == 2) {
