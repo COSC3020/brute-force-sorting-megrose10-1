@@ -1,83 +1,72 @@
 function permutationSort(a) {
     //let isSorted = false;
-    //Amount of permutations
     let permNum = 0;
-    let listOfPerms = [];
+    let perms = [];
     //let numToMove = 0;
-
-    //If length is 0 or 1, list is sorted
-    if(a.length <= 1) { 
-        return permNum;
-    }
-    //Check if array is sorted, if so return
     if(checkSort(a)) {
         //console.log("already sorted");
         return permNum;
     }
-    if(a.length == 2) {
-        if(!checkSort(a)) {
-            permNum++;
-            [a[0], a[1]] = [a[1], a[0]];
-        }
-        return permNum;
-    }
-    listOfPerms = permutations(a);
-    //console.log("Permutations: ", listOfPerms);
+
+    permutations(a, a.length, perms);
     
-    //Looking at the list of permutations, count perms until you find the sorted permutation
-    for(let perm of listOfPerms) {
-        permNum++;
+
+    for(let perm of perms) {
         if(checkSort(perm)) {
-            return (permNum - 1);
+            permNum++;
+            return permNum;
         }
+        permNum++;
     }
     //console.log("Number of permutations: " + permNum);
     //console.log("Sorted: " + a);
-    //return permNum;
-
     return permNum;
 }
 
-function permutations(a) {
-    let perms = [];
+function permutations(a, n, perms) {
+    //Array to keep track of times we swap elements
+    let c = [];
 
-    //If array is empty or one element, return
-    if(a.length <= 1) {
-        return [a];
+    //Initialize c to be the length of our array and each element as zero
+    for(let i = 0; i < n; i++) {
+        c[i] = 0;
     }
-    //For each element in the array, generate its permutatiosn
-    for(let i = 0; i < a.length; i++) {
-        let perm = a[i]; //Element we are keeping the same
-        let rePerm = a.slice(0, i).concat(a.slice(i + 1));
-        //Recursively call permutations to find permutatiosn of what is left in array
-        let reArrPerm = permutations(rePerm);
 
-        // Put together the current element with the permutations we found
-        for(let permArr of reArrPerm) {
-            let permsTogether = [perm, ...permArr];
-            let duplicate = false;
-            //See if permutation has already been found
-            for(let existingPerm of perms) {
-                if(duplicateTest(existingPerm, permsTogether)) {
-                    duplicate = true;
-                    break;
-                }
+    //Start with element after first element
+    let i = 1;
+
+    //While there are still permuations
+    while(i < n) {
+        //If element should be swapped
+        if(c[i] < i) {
+            //if i is even, switch first and i positions
+            if(i % 2 == 0) {
+                let temp = a[0];
+                a[0] = a[i];
+                a[i] = temp;
+            }
+            //if i is odd, switch i and c[i] positions 
+            else{
+                let temp = a[c[i]];
+                a[c[i]] = a[i];
+                a[i] = temp;
             }
 
-            if(!duplicate) {
-                perms.push(permsTogether);
-            }
+            //add permutation of array to perms
+            perms.push([...a]);
+
+            c[i]++;
+            i = 0;
         }
-        //perms = perms.concat(reArrPerm.map(permArr => [perm, ...permArr]));
+        else {
+            c[i] = 0;
+            i++;
+        }
     }
-    //console.log(perms);
- 
-    return perms;
-    
 }
 
 function checkSort(array) {
-    //Go through array to check if it is sorted
+
     for(let i = 0; i < array.length; i++) {
         for(let j = i + 1; j < array.length; j++){
             if(array[i] > array[j]) {
@@ -90,18 +79,6 @@ function checkSort(array) {
     return true;
 }
 
-//Function to test if there is a duplicate
-function duplicateTest(previousArray, newArray) {
-    
-    
-    for(let i = 0; i < previousArray.length; i++) {
-        if(previousArray[i] != newArray[i]) {
-            return false;
-        }
-    }
 
-    return true;
-}
 
-//console.log(permutations([1, 0]))
-//console.log(permutationSort([1, 0]));
+
