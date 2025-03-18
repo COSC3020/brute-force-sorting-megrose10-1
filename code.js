@@ -10,9 +10,9 @@ function permutationSort(a) {
 
     permutations(a, a.length, perms);
     
-
-    for(let perm of perms) {
-        if(checkSort(perm)) {
+    
+    for(let i = 1; i < perms.length; i++) {
+        if(checkSort(perms[i])) {
             permNum++;
             return permNum;
         }
