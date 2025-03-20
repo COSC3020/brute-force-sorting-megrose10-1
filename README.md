@@ -22,3 +22,5 @@ randomly without memory instead of systematically trying them?
 
 Describe your reasoning and the conclusion you've come to. Your reasoning is the
 most important part. Add your answer to this markdown file.
+
+Starting with generating all permutatiosn, this would take a complexity of n factorial (O(n!)). In the loop that checks each permutation if it is sorted or not, we call checkSort which has a nested for loop being O(n^2) This would all result in O(n^2 * n!). The other for loops not mentioned are not in the time complexity since these override or are constant. The best case input for this implementation would be a sorted array, since it checks it first thing. The worst case would be an array going in descending order since it would try all permutations and the sorted one being last. No matter which way you generate permutations, the worst time complexity will be the same. However, depending on the permutations you generate randomly, this time complexity averagely can be improved. 
