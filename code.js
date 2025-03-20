@@ -2,6 +2,7 @@ function permutationSort(a) {
     //let isSorted = false;
     let permNum = 0;
     let perms = [];
+    let sortedPermNum = 0;
     //let numToMove = 0;
     if(checkSort(a)) {
         //console.log("already sorted");
@@ -16,8 +17,12 @@ function permutationSort(a) {
             permNum++;
             return permNum;
         }
+        sortedPermNum = i;
         permNum++;
     }
+
+    a = [perms[sortedPermNum]];
+    console.log(a);
     //console.log("Number of permutations: " + permNum);
     //console.log("Sorted: " + a);
     return permNum;
@@ -79,6 +84,6 @@ function checkSort(array) {
     return true;
 }
 
-
-
-
+console.log(permutationSort([0, 1, 0]));
+console.log(permutationSort([1, 0, 1]));
+console.log(permutationSort([2, 1]));
