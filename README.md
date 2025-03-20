@@ -11,8 +11,7 @@ The return value should be the number of permutations that were tried until the
 sorted list was "discovered". The unsorted list passed as an argument should be
 sorted, i.e. do not copy the list and sort the copy.
 
-For developing my permutations for the submitted sorting I reverenced this website https://www.geeksforgeeks.org/heaps-algorithm-for-generating-permutations/ and this website
-https://en.wikipedia.org/wiki/Heap%27s_algorithm. 
+I discussed what this problem is overall asking with cole, olivia, and ashylyn. When my original permuations were not working, I went to the TA during lab/office hours and he recommended reading https://medium.com/@mevinmevi88/step-by-step-guide-to-array-permutation-using-recursion-in-javascript-0cac4fece570, which I used before this implementation but decided on a more interative approach. I referenced https://www.geeksforgeeks.org/heaps-algorithm-for-generating-permutations/ and this website https://en.wikipedia.org/wiki/Heap%27s_algorithm for heap's algorithm on developing permutatiosn. I certify that I have listed all sources used to complete this exercise, including the use of any Large Language Models. All of the work is my own, except where stated otherwise. I am aware that plagiarism carries severe penalties and that if plagiarism is suspected, charges may be filed against me without prior notice.
 
 ## Runtime Analysis
 
