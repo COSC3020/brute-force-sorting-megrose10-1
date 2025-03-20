@@ -24,7 +24,7 @@ function permutationSort(a) {
     }
 
     //a = [perms[sortedPermNum]];
-    console.log(a);
+    //console.log(a);
     //console.log("Number of permutations: " + permNum);
     //console.log("Sorted: " + a);
     return permNum;
