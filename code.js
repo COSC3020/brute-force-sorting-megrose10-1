@@ -84,6 +84,6 @@ function checkSort(array) {
     return true;
 }
 
-console.log(permutationSort([0, 1, 0]));
-console.log(permutationSort([1, 0, 1]));
-console.log(permutationSort([2, 1]));
+//console.log(permutationSort([0, 1, 0]));
+//console.log(permutationSort([1, 0, 1]));
+//console.log(permutationSort([2, 1]));
