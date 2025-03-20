@@ -15,7 +15,9 @@ function permutationSort(a) {
     for(let i = 0; i < perms.length; i++) {
         if(checkSort(perms[i])) {
             permNum++;
+            //Remove current unsorted array
             a.length = 0;
+            //Put in new sorted array
             a.push(...perms[i]);
             return permNum;
         }
