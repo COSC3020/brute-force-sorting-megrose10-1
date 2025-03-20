@@ -11,8 +11,8 @@ The return value should be the number of permutations that were tried until the
 sorted list was "discovered". The unsorted list passed as an argument should be
 sorted, i.e. do not copy the list and sort the copy.
 
-https://www.geeksforgeeks.org/heaps-algorithm-for-generating-permutations/
-https://en.wikipedia.org/wiki/Heap%27s_algorithm
+For developing my permutations for the submitted sorting I reverenced this website https://www.geeksforgeeks.org/heaps-algorithm-for-generating-permutations/ and this website
+https://en.wikipedia.org/wiki/Heap%27s_algorithm. 
 
 ## Runtime Analysis
 
