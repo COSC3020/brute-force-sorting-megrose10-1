@@ -15,13 +15,15 @@ function permutationSort(a) {
     for(let i = 1; i < perms.length; i++) {
         if(checkSort(perms[i])) {
             permNum++;
+            a.length = 0;
+            a.push(...perms[i]);
             return permNum;
         }
-        sortedPermNum = i;
+        //sortedPermNum = i;
         permNum++;
     }
 
-    a = [perms[sortedPermNum]];
+    //a = [perms[sortedPermNum]];
     console.log(a);
     //console.log("Number of permutations: " + permNum);
     //console.log("Sorted: " + a);
