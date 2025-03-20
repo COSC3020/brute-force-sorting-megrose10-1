@@ -12,7 +12,7 @@ function permutationSort(a) {
     permutations(a, a.length, perms);
     
     
-    for(let i = 1; i < perms.length; i++) {
+    for(let i = 0; i < perms.length; i++) {
         if(checkSort(perms[i])) {
             permNum++;
             a.length = 0;
