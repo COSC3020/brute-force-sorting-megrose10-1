@@ -75,13 +75,10 @@ function permutations(a, n, perms) {
 }
 
 function checkSort(array) {
-
+    //Check if next element is less or greater than current
     for(let i = 0; i < array.length; i++) {
-        for(let j = i + 1; j < array.length; j++){
-            if(array[i] > array[j]) {
-                //console.log("this is false");
-                return false;
-            }
+        if(array[i] > array[i+1]) {
+            return false;
         }
     }
     //console.log(array);
